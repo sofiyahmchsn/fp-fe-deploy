@@ -27,7 +27,11 @@ const Photos = () => {
     fetch(`https://gallery-app-server.vercel.app/photos?_sort=id&_order=${sort}&q=${submited}`)
     .then((res) => res.json())
     .then((data) => {
-      setPhotos(data)
+      if(!data.error){
+        setPhotos(data)
+      } else{
+        setError(data.error)
+      }
     })
     .catch((error) => console.log(error))
     setLoading(false)
@@ -39,7 +43,11 @@ const Photos = () => {
     fetch("https://gallery-app-server.vercel.app/photos")
     .then((res) => res.json())
     .then((data) => {
-      setPhotos(data)
+      if(!data.error){
+        setPhotos(data)
+      } else{
+        setError(data.error)
+      }
     })
     .catch((error) => console.log(error))
     setLoading(false)
