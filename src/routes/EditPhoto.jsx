@@ -25,8 +25,7 @@ const EditPhoto = () => {
     })
     .then((res) => res.json())
     .then((data) => {
-      !data.error && navigate("/photos")
-      return data
+      !data.error?navigate("/photos"):setError(data.error)
     });
     // TODO: answer here
   };
